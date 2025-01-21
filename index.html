@@ -149,6 +149,31 @@
 
   <script>
 
+
+
+        let audioElement = null;
+
+        // Function to load the audio file
+        function loadAudio() {
+            audioElement = new Audio('<?= $audioFile ?>');
+        }
+
+        // Play the audio
+        function playAudio() {
+            if (!audioElement) {
+                loadAudio();
+            }
+            audioElement.play();
+        }
+
+        // Pause the audio
+        function pauseAudio() {
+            if (audioElement) {
+                audioElement.pause();
+            }
+        }
+  
+
     // GSAP Animations for the cards
     gsap.to(".song-card", {
       scale: 1,
@@ -181,6 +206,7 @@
     //   ease: "linear",
     // });
   </script>
+
 </body>
 </html>
 
