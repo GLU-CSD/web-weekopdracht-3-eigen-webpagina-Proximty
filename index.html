@@ -1,16 +1,187 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My project title</title>
-    <link rel="shortcut icon" type="image/png" href="/assets/favicon.png">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-    <!-- <script src="CDN library url"></script> -->
-    <script defer src="main.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify Hits</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #1db954, #191414);
+      color: white;
+      overflow-x: hidden;
+      height: 50%; 
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 0.5rem;
+      color: #b3b3b3;
+    }
+
+    .song-list-wrapper {
+      width: 100%;
+      overflow-x: hidden;
+      display: flex;
+      justify-content: center;
+    
+     
+    }
+
+    .song-list {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .song-card {
+      background: #333;
+      border-radius: 30px;
+      padding: 1rem;
+      width: 250px;
+      text-align: center;
+      transform: scale(0);
+      opacity: 0;
+    }
+
+    .song-card img {
+      width: 80%;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .song-title {
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+
+    .song-artist {
+      font-size: 1.1rem;
+      color: #b3b3b3;
+    }
+
+    audio {
+      width: 100%;
+      margin-top: 1rem;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Hello world!</h1>
+  <header>
+    <h1>Spotify Hits</h1>
+    <h2>Top Trending Songs</h2>
+  </header>
+
+  <main>
+    <div class="song-list-wrapper">
+      <div class="song-list">
+        <!-- Song 1 -->
+        <div class="song-card">
+          <img src="https://via.placeholder.com/250?text=Song+1" alt="Song 1">
+          <div class="song-title">Die With A Smile</div>
+          <div class="song-artist">Artist 1</div>
+          <audio controls>
+            <source src="https://soundcloud.com/ladygaga/die-with-a-smile?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" type="audio/mp3">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+        <!-- Song 2 -->
+        <div class="song-card">
+          <img src="https://via.placeholder.com/250?text=Song+2" alt="Song 2">
+          <div class="song-title">Blinding Lights</div>
+          <div class="song-artist">The Weeknd</div>
+          <audio controls>
+            <source src="https://soundcloud.com/tonya-hall-110609862/sets/bliding-lights-weekend?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" type="audio/mp3">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+        <!-- Song 3 -->
+        <div class="song-card">
+          <img src="https://via.placeholder.com/250?text=Song+3" alt="Song 3">
+          <div class="song-title">Levitating</div>
+          <div class="song-artist">Dua Lipa</div>
+          <audio controls>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+        <!-- Song 4 -->
+        <div class="song-card">
+          <img src="https://via.placeholder.com/250?text=Song+4" alt="Song 4">
+          <div class="song-title">Good 4 U</div>
+          <div class="song-artist">Olivia Rodrigo</div>
+          <audio controls>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+        <!-- Song 5 -->
+        <div class="song-card">
+          <img src="https://via.placeholder.com/250?text=Song+5" alt="Song 5">
+          <div class="song-title">Kiss Me More</div>
+          <div class="song-artist">Doja Cat</div>
+          <audio controls>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+  <script>
+    // GSAP Animations for the cards
+    gsap.to(".song-card", {
+      scale: 1,
+      opacity: 1,
+      duration: 1,
+      stagger: 0.2,
+      ease: "back.out(1.7)",
+    });
+
+    gsap.from("h1", {
+      y: -50,
+      opacity: 0,
+      duration: 1,
+      ease: "power2.out",
+    });
+
+    gsap.from("h2", {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      delay: 0.3,
+      ease: "power2.out",
+    });
+
+    // // Horizontal Scroll Animation with GSAP
+    // gsap.to(".song-list", {
+    //   x: -1200,
+    //   duration: 15,
+    //   repeat: -10,
+    //   ease: "linear",
+    // });
+  </script>
 </body>
 </html>
+
+
+
