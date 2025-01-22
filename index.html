@@ -8,21 +8,32 @@
   <title>Spotify Hits</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <style>
+    
     body {
       font-family: Arial, sans-serif;
+      font-size: 100%;
+      width:100%;
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #1db954, #191414);
+      background: linear-gradient(0deg, rgba(0,240,255,1) 0%, rgba(37,136,166,1) 44%, rgba(0,0,0,1) 100%);
       color: white;
       overflow-x: hidden;
-      height: 50%; 
       display: flex;
       flex-direction: column;
     }
+    @media all and (max-width:800px){
+      main{
+        width:100%;
+      }
+    }
+  main{
+   width:100%; 
+  }
 
     header {
       text-align: center;
       padding: 2rem 1rem;
+      width:20% ;
     }
 
     h1 {
@@ -41,7 +52,7 @@
       overflow-x: hidden;
       display: flex;
       justify-content: center;
-    
+     
      
     }
 
@@ -54,7 +65,8 @@
       background: #333;
       border-radius: 30px;
       padding: 1rem;
-      width: 250px;
+      width:100%;
+      max-width: fit-content;
       text-align: center;
       transform: scale(0);
       opacity: 0;
@@ -77,7 +89,7 @@
     }
 
     audio {
-      width: 100%;
+      width: 80%;
       margin-top: 1rem;
       border-radius: 5px;
     }
@@ -90,11 +102,12 @@
   </header>
 
   <main>
+    
     <div class="song-list-wrapper">
       <div class="song-list">
         <!-- Song 1 -->
         <div class="song-card">
-          <img src="https://via.placeholder.com/250?text=Song+1" alt="Song 1">
+          <img src="assets/img/APT.png" alt="Song 1">
           <div class="song-title">APT</div>
           <div class="song-artist">Artist 1</div>
           <audio controls>
@@ -104,7 +117,7 @@
         </div>
         <!-- Song 2 -->
         <div class="song-card">
-          <img src="https://via.placeholder.com/250?text=Song+2" alt="Song 2">
+          <img src="assets/img/Blinding Light.png" alt="Song 2">
           <div class="song-title">Blinding Lights</div>
           <div class="song-artist">The Weeknd</div>
           <audio controls>
@@ -151,27 +164,27 @@
 
 
 
-        let audioElement = null;
+        // let audioElement = null;
 
-        // Function to load the audio file
-        function loadAudio() {
-            audioElement = new Audio('<?= $audioFile ?>');
-        }
+        // // Function to load the audio file
+        // function loadAudio() {
+        //     audioElement = new Audio('<?= $audioFile ?>');
+        // }
 
-        // Play the audio
-        function playAudio() {
-            if (!audioElement) {
-                loadAudio();
-            }
-            audioElement.play();
-        }
+        // // Play the audio
+        // function playAudio() {
+        //     if (!audioElement) {
+        //         loadAudio();
+        //     }
+        //     audioElement.play();
+        // }
 
-        // Pause the audio
-        function pauseAudio() {
-            if (audioElement) {
-                audioElement.pause();
-            }
-        }
+        // // Pause the audio
+        // function pauseAudio() {
+        //     if (audioElement) {
+        //         audioElement.pause();
+        //     }
+        // }
   
 
     // GSAP Animations for the cards
@@ -198,13 +211,15 @@
       ease: "power2.out",
     });
 
-    // // Horizontal Scroll Animation with GSAP
-    // gsap.to(".song-list", {
-    //   x: -1200,
-    //   duration: 15,
-    //   repeat: -10,
-    //   ease: "linear",
-    // });
+    // Horizontal Scroll Animation with GSAP
+    gsap.to(".song-list", {
+      x: -1200,
+      duration: 15,
+      repeat: -10,
+      ease: "linear",
+    });
+    
+  
   </script>
 
 </body>
